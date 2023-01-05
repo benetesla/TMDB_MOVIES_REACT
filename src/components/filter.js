@@ -1,18 +1,28 @@
 import { useEffect } from "react";
 
 
-function Filtro(props) {
-  const { filter, setFilter } = props;
-
+function Filtro({setActiveGenre, activeGenre, setFiltred, popular}) {
   useEffect(() => {
-    console.log("Filter: ", filter);
-  }, [filter]);
+    if (activeGenre === 0) {
+      setFiltred(popular);
+    } else {
+      const filtered = popular.filter((movie) => movie.genre_ids.includes(activeGenre));
+      setFiltred(filtered);
+    }
+  }, [activeGenre, popular, setFiltred]);
 
   return (
     <div className="filter">
-      <button onClick={() => setFilter("popular")}>Popular</button>
-      <button onClick={() => setFilter("top_rated")}>Top Rated</button>
-      <button onClick={() => setFilter("upcoming")}>Upcoming</button>
+      <button onClick={() =>
+      setActiveGenre(0)
+      }>all</button>
+      <button 
+      onClick={() =>
+        setActiveGenre(35)
+        }>Comedy</button>
+      <button onClick={() =>
+      setActiveGenre(28)
+      }>Action</button>
     </div>
   );
 }
