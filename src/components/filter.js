@@ -13,16 +13,19 @@ function Filtro({setActiveGenre, activeGenre, setFiltred, popular}) {
 
   return (
     <div className="filter">
-      <button onClick={() =>
+      <button className={activeGenre === 0 ?
+      "active" : ""} onClick={() =>
       setActiveGenre(0)
-      }>all</button>
-      <button 
+      }>Todos</button>
+      <button  className={activeGenre === 0 ?
+      "active" : ""}
       onClick={() =>
         setActiveGenre(35)
-        }>Comedy</button>
-      <button onClick={() =>
+        }>Comedia</button>
+      <button  className={activeGenre === 0 ?
+      "active" : ""} onClick={() =>
       setActiveGenre(28)
-      }>Action</button>
+      }>Acao</button>
     </div>
   );
 }
